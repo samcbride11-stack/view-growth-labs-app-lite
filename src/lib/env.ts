@@ -17,3 +17,11 @@ export function getEnv(): Record<EnvKey, string> {
   }
   return Object.fromEntries(REQUIRED.map((key) => [key, process.env[key] as string])) as Record<EnvKey, string>;
 }
+
+// Only the intake form needs this, so it's checked separately: a missing value
+// must not break signups.
+export function getIntakeTable(): string {
+  const table = process.env.AIRTABLE_TABLE_INTAKE;
+  if (!table) throw new Error('Missing environment variables: AIRTABLE_TABLE_INTAKE');
+  return table;
+}

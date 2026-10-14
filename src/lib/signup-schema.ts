@@ -31,15 +31,25 @@ export function normalizeYouTubeUrl(value: string): string | null {
 
 const VIDEO_URL_ERROR = 'Please enter a YouTube video link (youtube.com or youtu.be)';
 
+// Shared with the intake form.
+export const emailField = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .min(1, 'Please enter your email')
+  .max(254, 'Please enter a valid email address')
+  .email('Please enter a valid email address');
+
+export const GOOGLE_ADS_ID_ERROR = 'Customer IDs are 10 digits, like 123-456-7890';
+
+// Strips the spaces and dashes people copy from Google Ads ("123-456-7890" -> "1234567890").
+export function normalizeGoogleAdsId(value: string): string {
+  return value.replace(/[\s-]/g, '');
+}
+
 export const signupSchema = z.object({
   name: z.string().trim().min(1, 'Please enter your name').max(200, 'Please keep this under 200 characters'),
-  email: z
-    .string()
-    .trim()
-    .toLowerCase()
-    .min(1, 'Please enter your email')
-    .max(254, 'Please enter a valid email address')
-    .email('Please enter a valid email address'),
+  email: emailField,
   videoUrl: z
     .string()
     .trim()
@@ -59,8 +69,8 @@ export const signupSchema = z.object({
   googleAdsId: z
     .string()
     .optional()
-    .transform((v) => v?.replace(/[\s-]/g, '') || undefined)
-    .refine((v) => v === undefined || /^\d{10}$/.test(v), 'Customer IDs are 10 digits, like 123-456-7890'),
+    .transform((v) => (v ? normalizeGoogleAdsId(v) : '') || undefined)
+    .refine((v) => v === undefined || /^\d{10}$/.test(v), GOOGLE_ADS_ID_ERROR),
   notes: z
     .string()
     .trim()
@@ -76,10 +86,11 @@ export type FieldErrors = Partial<Record<SignupField, string>>;
 // Honeypot field name. Real visitors never see or fill it.
 export const HONEYPOT_FIELD = 'website';
 
-export function toFieldErrors(error: z.ZodError): FieldErrors {
-  const errors: FieldErrors = {};
+// Also used by the intake form, with its own field names as `K`.
+export function toFieldErrors<K extends string = SignupField>(error: z.ZodError): Partial<Record<K, string>> {
+  const errors: Partial<Record<K, string>> = {};
   for (const issue of error.issues) {
-    const field = issue.path[0] as SignupField | undefined;
+    const field = issue.path[0] as K | undefined;
     if (field && !errors[field]) errors[field] = issue.message;
   }
   return errors;

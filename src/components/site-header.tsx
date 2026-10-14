@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { Logo } from '@/components/logo';
+import { MobileMenu } from '@/components/mobile-menu';
 
 const NAV = [
   { href: '/#how-it-works', label: 'How it works' },
   { href: '/#pricing', label: 'Pricing' },
   { href: '/#faq', label: 'FAQ' },
+  { href: '/support', label: 'Support' },
 ];
 
 export function SiteHeader() {
@@ -12,7 +14,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-line/40 bg-paper/90 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Logo />
-        <nav aria-label="Main" className="flex items-center gap-6">
+        <nav aria-label="Main" className="flex items-center gap-3 md:gap-6">
           <ul className="hidden items-center gap-6 text-sm font-medium text-muted md:flex">
             {NAV.map((item) => (
               <li key={item.href}>
@@ -28,6 +30,7 @@ export function SiteHeader() {
           >
             Get started
           </Link>
+          <MobileMenu items={NAV} />
         </nav>
       </div>
     </header>

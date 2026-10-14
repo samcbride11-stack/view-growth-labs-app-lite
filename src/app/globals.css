@@ -39,14 +39,34 @@
   .prose-page h2 {
     @apply mb-3 mt-10 font-display text-xl font-bold;
   }
+  .prose-page h3 {
+    @apply mb-2 mt-8 font-display text-lg font-bold;
+  }
   .prose-page p,
-  .prose-page ul {
+  .prose-page ul,
+  .prose-page ol,
+  .prose-page blockquote {
     @apply mb-4 text-muted;
   }
   .prose-page ul {
     @apply list-disc space-y-1 pl-5;
   }
+  .prose-page ol {
+    @apply list-decimal space-y-1 pl-5;
+  }
   .prose-page a {
     @apply text-accent-strong underline underline-offset-2;
+  }
+  .prose-page strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-page code {
+    @apply rounded bg-accent-soft px-1.5 py-0.5 text-sm text-ink;
+  }
+  .prose-page blockquote {
+    @apply border-l-4 border-accent-soft pl-4;
+  }
+  .prose-page img {
+    @apply my-6 rounded-xl border border-line/60;
   }
 }

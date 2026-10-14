@@ -1,5 +1,6 @@
-// Server only: imported solely by the signup API route, so the token never reaches the browser.
-import { SIGNUP_FIELDS, getBudgetTier } from '@/lib/airtable-fields';
+// Server only: imported solely by API routes, so the token never reaches the browser.
+import { INTAKE_FIELDS, SIGNUP_FIELDS, getBudgetTier } from '@/lib/airtable-fields';
+import type { IntakeInput } from '@/lib/intake-schema';
 import type { SignupInput } from '@/lib/signup-schema';
 
 interface AirtableConfig {
@@ -36,12 +37,20 @@ function buildFields(input: SignupInput, signupDate: string): Record<string, str
   return fields;
 }
 
+export function createSignupRecord(config: AirtableConfig, input: SignupInput, signupDate: string) {
+  return createRecord(config, buildFields(input, signupDate));
+}
+
+export function createIntakeRecord(config: AirtableConfig, input: IntakeInput) {
+  return createRecord(config, {
+    [INTAKE_FIELDS.email]: input.email,
+    // Number field; customer IDs are 10 digits, well within safe integer range.
+    [INTAKE_FIELDS.googleAdsId]: Number(input.googleAdsId),
+  });
+}
+
 // Creates exactly one record. One attempt, no retries, no typecast. Returns the new record ID.
-export async function createSignupRecord(
-  config: AirtableConfig,
-  input: SignupInput,
-  signupDate: string,
-): Promise<string> {
+async function createRecord(config: AirtableConfig, fields: Record<string, string | number>): Promise<string> {
   const url = `https://api.airtable.com/v0/${encodeURIComponent(config.baseId)}/${encodeURIComponent(config.table)}`;
 
   let res: Response;
@@ -52,7 +61,7 @@ export async function createSignupRecord(
         Authorization: `Bearer ${config.token}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ records: [{ fields: buildFields(input, signupDate) }] }),
+      body: JSON.stringify({ records: [{ fields }] }),
       cache: 'no-store',
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });

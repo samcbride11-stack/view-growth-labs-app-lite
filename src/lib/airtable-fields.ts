@@ -27,3 +27,11 @@ export const BUDGET_TIER_VALUES = BUDGET_TIERS.map((t) => t.value) as [BudgetTie
 export function getBudgetTier(value: BudgetTierValue) {
   return BUDGET_TIERS.find((t) => t.value === value)!;
 }
+
+// Airtable "Intake Info" table (AIRTABLE_TABLE_INTAKE): extra details from signed clients.
+// Never write ID (fldai6CeQZWvg9Dby, auto number). Signup (fld56zDrsgaDuljgD, link to Signups)
+// is left for the owner to set, since linking by email would need a token with read access.
+export const INTAKE_FIELDS = {
+  email: 'fldfP9UCPfwXBsuVR', // Email: email
+  googleAdsId: 'fldkfiDSIQza9z8un', // Google Ads ID: number
+} as const;

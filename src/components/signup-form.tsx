@@ -248,7 +248,7 @@ export function SignupForm() {
       )}
 
       <button type="submit" disabled={submitting} className="btn-primary w-full sm:w-auto">
-        {submitting ? 'Submitting…' : 'Submit my video'}
+        {submitting ? 'Submitting…' : 'Start my campaign'}
       </button>
     </form>
   );
