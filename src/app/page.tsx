@@ -14,7 +14,7 @@ const steps = [
   },
   {
     title: 'Track your results',
-    body: "Your campaign runs on YouTube's official ad platform. We optimize for cost per public view, and you can monitor spend and views, including views added to your public count, in your own Google Ads account. A summary report is emailed when the campaign ends.",
+    body: "Your campaign runs on YouTube's official ad platform. We optimize for cost per public view, and you can monitor spend and views, including views added to your public count, in your own Google Ads account. We’ll email you progress updates along the way and a full summary when it ends. ",
   },
 ];
 
@@ -29,16 +29,16 @@ const approach = [
   },
   {
     title: 'Decisions based on data',
-    body: 'Every campaign we run adds to our cost benchmarks, so our recommendations come from real results, not guesses.',
+    body: 'Every campaign we run adds to our cost benchmarks, so every estimate we give is grounded in real performance.',
   },
 ];
 
 const timeline = [
-  { when: 'Before launch', what: "Video checked against Google's ad requirements" },
-  { when: 'Launch', what: 'Budget paced over 5–14 days, depending on its size' },
-  { when: '48 hours', what: 'First performance check and bid adjustment' },
-  { when: 'Day 3', what: 'Costly regions paused on budgets of $500+' },
-  { when: 'After the end', what: "Final report once YouTube's numbers settle (about 72 hours)" },
+  { when: 'Before launch', what: "We review your video against Google’s ad policies and confirm the plan with you." },
+  { when: 'Launch', what: 'Your budget runs at a higher daily rate for fast results. Most campaigns run 1–2 weeks, and larger budgets run longer.' },
+  { when: '48 hours', what: 'Early performance check and bid adjustments.' },
+  { when: 'While it runs', what: 'Ongoing optimization to keep cost per view low, with progress updates by email.' },
+  { when: 'After the end', what: "A full summary once YouTube’s numbers settle, usually within a few days." },
 ];
 
 const audiences = [
@@ -156,7 +156,7 @@ export default function HomePage() {
       <section id="how-it-works" className="border-y border-line/40 bg-white py-20 sm:py-24">
         <div className="container-page">
           <p className="eyebrow">How it works</p>
-          <h2 className="h2 mt-3 max-w-2xl">From signup to a live campaign in three steps.</h2>
+          <h2 className="h2 mt-3 max-w-2xl">From signup to results in three steps.</h2>
           <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
             {steps.map((step, i) => (
               <li key={step.title} className="relative">
