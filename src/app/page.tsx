@@ -44,7 +44,7 @@ const timeline = [
 const audiences = [
   { title: 'Creators', body: "Give a new video early momentum so it doesn't launch to an empty view count." },
   { title: 'Brands and businesses', body: 'Add visible traction to ads, product videos, and explainers.' },
-  { title: 'Musicians and filmmakers', body: 'Put a music video, trailer, or short film in front of a wider audience.' },
+  { title: 'Musicians and filmmakers', body: 'Give a music video, trailer, or short film a stronger view count from day one.' },
 ];
 
 const reasons = [
@@ -73,7 +73,7 @@ const faqs = [
   },
   {
     q: 'How long does a campaign run?',
-    a: 'It depends on your budget: about 5 to 7 days for $250–499, 7 to 10 days for $500–999, and 10 to 14 days for $1,000 or more. We agree the exact dates with you before launch.',
+    a: 'It depends on your budget: about 4 to 7 days for $100–499, 7 to 10 days for $500–999, and 10 to 14 days for $1,000 or more. We agree the exact dates with you before launch.',
   },
   {
     q: 'How do I see results?',
@@ -214,7 +214,7 @@ export default function HomePage() {
       <section className="border-t border-line/40 py-20 sm:py-24">
         <div className="container-page">
           <p className="eyebrow">Who it&apos;s for</p>
-          <h2 className="h2 mt-3 max-w-2xl">For anyone with a video worth seeing.</h2>
+          <h2 className="h2 mt-3 max-w-2xl">Built for videos that deserve more views.</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {audiences.map((item) => (
               <div key={item.title} className="card p-7">
@@ -253,7 +253,7 @@ export default function HomePage() {
             <h2 className="h2 mt-3">Two separate costs. No hidden ones.</h2>
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted">
               Google bills your ad spend directly to your card, so you pay only for what is spent. Our management fee is{' '}
-              {pricing.managementFee.inline}, billed separately and collected before launch. No hidden costs.
+              {pricing.managementFee.inline}, billed separately and collected before launch.
             </p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
@@ -269,8 +269,10 @@ export default function HomePage() {
             </div>
             <div className="card border-accent-strong/50 p-7 ring-1 ring-accent-strong/20">
               <p className="text-sm font-semibold text-accent-strong">Management fee</p>
-              <p className="mt-3 font-display text-4xl font-extrabold">{pricing.managementFee.headline}</p>
+              <p className="mt-3 font-display text-4xl font-extrabold">{pricing.managementFee.headline}
+              </p>
               <p className="mt-1 text-sm text-muted">{pricing.managementFee.summary}</p>
+              <p className="mt-2 text-sm text-muted">e.g. $500 in ad spend → $100 fee</p>
               <ul className="mt-6 space-y-2 border-t border-line/50 pt-5 text-sm leading-relaxed text-muted">
                 <li>Paid to View Growth Labs</li>
                 <li>Stated upfront, collected before launch</li>

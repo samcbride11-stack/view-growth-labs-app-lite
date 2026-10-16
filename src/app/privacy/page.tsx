@@ -4,7 +4,6 @@ import { site } from '@/config/site';
 
 export const metadata: Metadata = { title: 'Privacy policy' };
 
-// OWNER REVIEW: placeholder text. Have this reviewed before launch.
 export default function PrivacyPage() {
   return (
     <LegalPage title="Privacy policy" updated="October 2026">

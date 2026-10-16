@@ -21,18 +21,19 @@ export const site = {
 export const pricing = {
   // Minimum ad spend, paid to Google directly.
   // The signup form only offers budget tiers at or above this amount.
-  minAdSpend: 250,
+  minAdSpend: 100,
 
   // Budget tiers offered in the signup form live in `src/lib/airtable-fields.ts`.
 
   // Management fee: a tiered percentage of ad spend.
   managementFee: {
     // Large figure shown on the pricing card.
-    headline: '10–20% of ad spend',
+    headline: '20% of ad spend',
     // Short line under the figure.
-    summary: '20% of first $1,000, 15% of next $1,000, then 10%',
+    summary: '20% on the first $1,000, 15% on the next $1,000, then 10%',
     // Sentence used in body copy, e.g. "Our management fee is ___, billed separately".
-    inline: 'a tiered percentage of ad spend (20% of the first $1,000, 15% of the next $1,000, then 10%)',
+    
+    inline: 'a tiered percentage of ad spend (20% on the first $1,000, 15% on the next $1,000, then 10%)',
   },
 } as const;
 

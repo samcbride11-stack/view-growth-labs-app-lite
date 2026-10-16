@@ -4,7 +4,6 @@ import { site } from '@/config/site';
 
 export const metadata: Metadata = { title: 'Terms of service' };
 
-// OWNER REVIEW: placeholder text. Have this reviewed before launch.
 export default function TermsPage() {
   return (
     <LegalPage title="Terms of service" updated="October 2026">
