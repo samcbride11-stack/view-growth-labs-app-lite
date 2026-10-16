@@ -28,7 +28,7 @@ export function SiteHeader() {
             href="/signup"
             className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-strong"
           >
-            Get started
+            Start
           </Link>
           <MobileMenu items={NAV} />
         </nav>

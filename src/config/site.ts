@@ -4,7 +4,7 @@
 export const site = {
   name: 'View Growth Labs',
   url: 'https://viewgrowthlabs.com',
-  // PLACEHOLDER: public contact address shown in the footer and policy pages.
+  // Public contact address shown in the footer and policy pages.
   contactEmail: 'support@viewgrowthlabs.com',
   // Logo shown in the header. Put the file in `public/brand/` and set `src` to match
   // (e.g. '/brand/logo.png'). Until the file exists, a built-in placeholder mark is shown.
@@ -25,15 +25,14 @@ export const pricing = {
 
   // Budget tiers offered in the signup form live in `src/lib/airtable-fields.ts`.
 
-  // PLACEHOLDER: management fee. Pending decision between a flat fee ($25-50)
-  // or the greater of a percentage of spend and a floor.
+  // Management fee: a tiered percentage of ad spend.
   managementFee: {
     // Large figure shown on the pricing card.
-    headline: '$TBD',
+    headline: '10–20% of ad spend',
     // Short line under the figure.
-    summary: 'Flat management fee per campaign',
+    summary: '20% of first $1,000, 15% of next $1,000, then 10%',
     // Sentence used in body copy, e.g. "Our management fee is ___, billed separately".
-    inline: 'a flat fee per campaign',
+    inline: 'a tiered percentage of ad spend (20% of the first $1,000, 15% of the next $1,000, then 10%)',
   },
 } as const;
 

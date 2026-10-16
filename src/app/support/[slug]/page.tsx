@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getSupportArticle, getSupportArticles, renderMarkdown } from '@/lib/support';
+import { getSupportArticle, getSupportArticles } from '@/lib/support';
 
 // Only the articles in `content/support/` exist; any other slug is a 404.
 export const dynamicParams = false;
@@ -28,7 +28,11 @@ export default async function SupportArticlePage({ params }: { params: Promise<{
           &larr; All support articles
         </Link>
         <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight">{article.title}</h1>
-        <div className="prose-page mt-8" dangerouslySetInnerHTML={{ __html: renderMarkdown(article.body) }} />
+        {/* Articles are written by the site owner, so the HTML is trusted. */}
+        <div
+          className={article.customLayout ? 'mt-8' : 'prose-page mt-8'}
+          dangerouslySetInnerHTML={{ __html: article.body }}
+        />
       </div>
     </section>
   );

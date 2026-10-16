@@ -1,0 +1,280 @@
+---
+title: Set up Google Ads for your YouTube channel
+summary: Create and verify your Google Ads account, then give us access.
+order: 1
+layout: custom
+---
+
+<style>
+/* Every rule is scoped to .vgl-guide so it can't restyle the rest of the site.
+   Colors and fonts follow the site's brand tokens (tailwind.config.ts). */
+.vgl-guide {
+  --surface: #FFFFFF;
+  --surface-2: #F1F4F8;
+  --ink: #2D3955;
+  --muted: #5A6478;
+  --line: #D9DCE1;
+  --accent: #176DB3;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E8F3FC;
+  --note-bg: #FFF5D9;
+  --note-line: #E3C86A;
+  --note-ink: #4A3A0A;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.vgl-guide * { box-sizing: border-box; }
+.vgl-guide h2, .vgl-guide h3 { font-family: var(--font-display), system-ui, sans-serif; font-weight: 700; line-height: 1.2; text-wrap: balance; margin: 0; }
+.vgl-guide p { margin: 0; }
+.vgl-guide a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.vgl-guide a:focus-visible, .vgl-guide summary:focus-visible, .vgl-guide input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Intro */
+.vgl-guide .top { display: grid; gap: 16px; }
+.vgl-guide .lede { color: var(--muted); font-size: 1.08rem; max-width: 62ch; }
+.vgl-guide .meta { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 4px 0 0; }
+.vgl-guide .meta li { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 12px; font-size: 0.85rem; color: var(--muted); }
+
+/* Buttons, matching the site's primary button */
+.vgl-guide a.btn {
+  display: inline-block; background: var(--accent); color: var(--accent-ink);
+  font-weight: 600; text-decoration: none; padding: 10px 22px; border-radius: 999px;
+  white-space: nowrap; transition: background-color 0.15s;
+}
+.vgl-guide a.btn:hover { background: var(--ink); }
+
+/* Sign up prompt */
+.vgl-guide .start {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px;
+}
+.vgl-guide .start p { min-width: 0; flex: 1 1 280px; }
+.vgl-guide .start strong { display: block; font-family: var(--font-display), system-ui, sans-serif; font-size: 1.05rem; }
+.vgl-guide .start span { color: var(--muted); font-size: 0.95rem; }
+
+/* Sections */
+.vgl-guide .part { padding-top: 40px; }
+.vgl-guide h2 { font-size: 1.5rem; margin-bottom: 8px; }
+.vgl-guide .sub-lede { color: var(--muted); margin-bottom: 18px; max-width: 62ch; }
+
+/* Checklist. The "x of 5 ready" count is a CSS counter, since scripts in articles don't run. */
+.vgl-guide #before { counter-reset: ready; }
+.vgl-guide .checklist { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.vgl-guide .checklist li { border-bottom: 1px solid var(--line); }
+.vgl-guide .check { display: flex; gap: 12px; align-items: flex-start; padding: 12px 2px; cursor: pointer; }
+.vgl-guide .check input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--accent); flex: none; }
+.vgl-guide .check input:checked { counter-increment: ready; }
+.vgl-guide .check span { min-width: 0; }
+.vgl-guide .check input:checked + span { color: var(--muted); }
+.vgl-guide .progress { margin-top: 12px; font-size: 0.9rem; color: var(--muted); font-family: var(--mono); }
+.vgl-guide .progress::after { content: counter(ready) " of 6 ready"; }
+
+/* Steps */
+.vgl-guide .steps { list-style: none; margin: 0; padding: 0; }
+.vgl-guide .step { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 16px; }
+.vgl-guide .rail { display: flex; flex-direction: column; align-items: center; }
+.vgl-guide .num {
+  width: 36px; height: 36px; border-radius: 50%; flex: none;
+  background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; font-family: var(--mono); font-weight: 500;
+}
+.vgl-guide .line { flex: 1; width: 2px; background: var(--line); margin-block: 8px; }
+.vgl-guide .step:last-child .line { display: none; }
+.vgl-guide .step-body { padding-bottom: 40px; min-width: 0; display: grid; gap: 14px; align-content: start; }
+.vgl-guide .step:last-child .step-body { padding-bottom: 0; }
+.vgl-guide .step h3 { font-size: 1.25rem; padding-top: 3px; }
+.vgl-guide .step p { max-width: 64ch; }
+.vgl-guide .how { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; max-width: 64ch; list-style: decimal; }
+.vgl-guide .how li::marker { color: var(--accent); font-weight: 600; }
+.vgl-guide .how ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 6px; color: var(--muted); list-style: disc; }
+.vgl-guide b { font-weight: 600; }
+.vgl-guide .path {
+  font-family: var(--mono); font-size: 0.86em; background: var(--accent-soft);
+  padding: 1px 6px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.vgl-guide .note {
+  background: var(--note-bg); border: 1px solid var(--note-line); color: var(--note-ink);
+  border-radius: 8px; padding: 12px 14px; max-width: 64ch; font-size: 0.95rem;
+}
+
+/* Customer ID example */
+.vgl-guide .idmock { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; max-width: 440px; background: var(--surface); }
+.vgl-guide .idbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 16px; background: var(--surface-2); padding: 10px 14px; }
+.vgl-guide .idbar .acct { color: var(--muted); font-size: 0.9rem; }
+.vgl-guide .idbar .cid { font-family: var(--mono); font-size: 1.05rem; font-weight: 500; letter-spacing: 0.02em; }
+.vgl-guide .idcap { padding: 8px 14px; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--line); }
+
+/* Trust */
+.vgl-guide .trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px 32px; margin-top: 8px; }
+.vgl-guide .trust > div { border-top: 2px solid var(--ink); padding-top: 12px; min-width: 0; }
+.vgl-guide .trust h3 { font-size: 1.02rem; margin-bottom: 6px; }
+.vgl-guide .trust p { color: var(--muted); font-size: 0.95rem; }
+
+/* FAQ */
+.vgl-guide .faq { border-top: 1px solid var(--line); margin-top: 8px; }
+.vgl-guide .faq details { border-bottom: 1px solid var(--line); }
+.vgl-guide .faq summary {
+  list-style: none; cursor: pointer; padding: 14px 2px; font-weight: 600;
+  display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+}
+.vgl-guide .faq summary::-webkit-details-marker { display: none; }
+.vgl-guide .faq summary::after { content: "+"; font-family: var(--mono); color: var(--accent); font-size: 1.2rem; flex: none; }
+.vgl-guide .faq details[open] summary::after { content: "\2212"; }
+.vgl-guide .faq .ans { padding: 0 2px 16px; color: var(--muted); max-width: 64ch; display: grid; gap: 8px; }
+
+.vgl-guide .fine { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; }
+</style>
+
+<div class="vgl-guide">
+  <div class="top">
+    <p class="lede">Before we can run your campaign, your channel needs a Google Ads account that we can manage. This guide shows you how to create and verify the account and give us access. You stay the owner the whole time.</p>
+    <ul class="meta">
+      <li>About 15 minutes</li>
+      <li>Done by the channel owner</li>
+      <li>No campaign to build</li>
+    </ul>
+    <div class="start">
+      <p><strong>Haven't signed up with us yet?</strong><span>Create your View Growth Labs account first, then come back to Step 1.</span></p>
+      <a class="btn" href="/signup">Sign up</a>
+    </div>
+  </div>
+
+  <div class="part" id="before">
+    <h2>Before you start</h2>
+    <p class="sub-lede">Tick these off as you go. Having them ready keeps the setup to one sitting.</p>
+    <ul class="checklist">
+      <li><label class="check" for="c1"><input type="checkbox" id="c1"><span>I can sign in to the Google account that owns my YouTube channel.</span></label></li>
+      <li><label class="check" for="c2"><input type="checkbox" id="c2"><span>I have my channel link handy, like youtube.com/@yourname.</span></label></li>
+      <li><label class="check" for="c3"><input type="checkbox" id="c3"><span>I know my billing country and time zone. Google says the time zone can't be changed later.</span></label></li>
+      <li><label class="check" for="c4"><input type="checkbox" id="c4"><span>I have a credit or debit card ready for Google to bill.</span></label></li>
+      <li><label class="check" for="c5"><input type="checkbox" id="c5"><span>The videos I want promoted are set to Public or Unlisted.</span></label></li>
+      <li><label class="check" for="c6"><input type="checkbox" id="c6"><span>I know the legal name that should appear on my ads. Google shows it publicly in an <b>About this advertiser</b> panel.</span></label></li>
+    </ul>
+    <div class="progress" aria-hidden="true"></div>
+  </div>
+
+  <div class="part" id="steps">
+    <h2>The setup</h2>
+    <p class="sub-lede">Three steps, in order. Google changes its menus from time to time, so if a label looks a little different, pick the closest match.</p>
+
+    <ol class="steps">
+      <li class="step" id="step-1">
+        <div class="rail"><div class="num" aria-hidden="true">1</div><div class="line"></div></div>
+        <div class="step-body">
+          <h3>Create and verify your Google Ads account</h3>
+          <ol class="how">
+            <li>Go to <a href="https://ads.google.com" rel="noopener">ads.google.com</a> and select <b>Start now</b>. Sign in with the Google account that owns your YouTube channel.</li>
+            <li>The screens are headed <b>Create your first campaign</b>, which is expected. The business name is optional, so you can leave it blank. Under <b>Where should people go after clicking your ad?</b>, keep <b>Your website</b> selected and paste your YouTube channel link. Select <b>Next</b>.</li>
+            <li>On <b>Describe your business to get better campaign suggestions</b>, leave everything as Google filled it in and select <b>Next</b>.</li>
+            <li>Select <b>Skip</b> on the next three screens: <b>Add more information to save time during setup</b>, <b>Choose your goal for this campaign</b> and <b>Choose a campaign type</b>. After the last one, Google asks <b>Leave campaign creation?</b> Select <b>Leave campaign creation</b>. Don't build a campaign. We build it for you.</li>
+            <li>On <b>Confirm your account and payment settings</b>:
+              <ul>
+                <li>Confirm your billing country and time zone. Google says the time zone applies to your whole account and can't be changed later.</li>
+                <li>Check the payments profile. It should show your name and <b>Individual</b>, which fits a creator who isn't a registered business. If it shows something else, select <b>Change</b>.</li>
+                <li>Add or confirm your card under <b>Payment method</b>. Google bills it on the 1st of each month, or sooner when your balance reaches your payment threshold.</li>
+                <li>Google may show a new-advertiser credit offer. Read its terms and deadline before you submit.</li>
+                <li>Google asks whether you want guidance from an account strategist by phone or messaging. This is optional, so choose Yes or No, then select <b>Submit</b>.</li>
+              </ul>
+            </li>
+            <li>When Google says <b>Your account was created</b>, select <b>Continue</b>. Google then asks you to complete advertiser verification before your ads can run.</li>
+            <li>On <b>Answer a few questions about your organization</b>:
+              <ul>
+                <li>Under <b>What legal name should appear in the ad disclosure?</b>, keep your own name selected if you're advertising as yourself. Google shows this name and your country to people who see your ads.</li>
+                <li>Under <b>Does (your name) manage Google Ads accounts for other organizations?</b>, choose <b>No</b>.</li>
+                <li>Select <b>Submit</b>. Google makes some information about you and your ads public, including ad creatives, the dates and locations your ads ran, and business contact information.</li>
+              </ul>
+            </li>
+          </ol>
+          <div class="note"><b>Heads up.</b> An account without a payment method can't run ads, so complete billing before moving on. Google places a temporary authorization of about $50 on your card. It's removed within about a week.</div>
+          <div class="note"><b>If Google asks for more.</b> Google may ask for more details to finish verification. If it does, complete them, because your ads can't run until verification is done.</div>
+        </div>
+      </li>
+
+      <li class="step" id="step-2">
+        <div class="rail"><div class="num" aria-hidden="true">2</div><div class="line"></div></div>
+        <div class="step-body">
+          <h3>Find your Customer ID</h3>
+          <p>Your Customer ID is a 10-digit number shown near the top right of Google Ads, under your account name. It looks like 123-456-7890. Copy it, because you'll send it to us in the next step.</p>
+          <div class="idmock" role="img" aria-label="Example Google Ads header showing an account name on the left and a 10-digit Customer ID on the right">
+            <div class="idbar"><span class="acct">Your account name</span><span class="cid">123-456-7890</span></div>
+            <div class="idcap">Example layout. Your account shows your own name and number.</div>
+          </div>
+        </div>
+      </li>
+
+      <li class="step" id="step-3">
+        <div class="rail"><div class="num" aria-hidden="true">3</div><div class="line"></div></div>
+        <div class="step-body">
+          <h3>Send us your Customer ID and accept our request</h3>
+          <ol class="how">
+            <li>Submit your Customer ID on our intake page.</li>
+            <li>We send a manager link request from View Growth Labs to your Google Ads account. We'll email you when it's on its way.</li>
+            <li>Sign in to your Google Ads account and open <span class="path">Admin &rsaquo; Access and security</span>, then the <b>Managers</b> tab. Under <b>Link request</b>, find our request and select <b>Accept</b> in the Actions column. You can also use <b>Accept request</b> in the email Google sends you.</li>
+          </ol>
+          <div>
+            <a class="btn" href="/intake">Submit your Customer ID</a>
+          </div>
+          <p>Once you accept, we'll email you to confirm that access is active. We then link your YouTube channel from inside your account. If you get an email asking you to approve the link, select approve.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="part" id="trust">
+    <h2>What this access means</h2>
+    <div class="trust">
+      <div>
+        <h3>We never need your password</h3>
+        <p>Access runs through Google's manager link. You don't share a login with us.</p>
+      </div>
+      <div>
+        <h3>You stay the owner</h3>
+        <p>The account, the channel and the billing profile are yours. You can remove our access at any time from the same Managers tab. Linking your channel later doesn't let anyone take control of it or edit your videos.</p>
+      </div>
+      <div>
+        <h3>Ad spend goes to Google</h3>
+        <p>Google bills the payment method on your account directly. Our fee is invoiced separately.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="part" id="faq">
+    <h2>Common questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Which Google account should I use?</summary>
+        <div class="ans"><p>Use the account that owns your YouTube channel. It keeps the account and the channel under the same owner, which makes linking the channel easier later.</p></div>
+      </details>
+      <details>
+        <summary>Google keeps pushing me to build a campaign.</summary>
+        <div class="ans"><p>Select <b>Skip</b> on each of the campaign screens. When Google asks whether you want to leave campaign creation, confirm that you do. We don't need a campaign from you.</p></div>
+      </details>
+      <details>
+        <summary>Why does Google want to verify me?</summary>
+        <div class="ans"><p>Google asks every advertiser to complete verification before ads can run. It gives people more transparency about who is behind an ad. The name you choose appears in the <b>About this advertiser</b> panel on your ads.</p></div>
+      </details>
+      <details>
+        <summary>Do I need to be monetized or have a minimum number of subscribers?</summary>
+        <div class="ans"><p>No. Running ads doesn't depend on monetization or a subscriber count.</p></div>
+      </details>
+      <details>
+        <summary>Google asked me to verify my payment or shows a temporary charge.</summary>
+        <div class="ans"><p>That's normal. Google places a temporary authorization of about $50 on a new card, and it's removed within about a week.</p></div>
+      </details>
+      <details>
+        <summary>I don't see a request from View Growth Labs.</summary>
+        <div class="ans"><p>Check the email address tied to your Google Ads account and the Managers tab under Admin &rsaquo; Access and security. If nothing is there, double-check the Customer ID you sent. If it was wrong, submit it again on the <a href="/intake">intake page</a>.</p></div>
+      </details>
+    </div>
+  </div>
+
+  <div class="fine">
+    <p>Screen names in this guide match Google Ads as we last checked it. Google changes its layouts often, so look for the closest match if something has moved.</p>
+    <p>Google Ads and YouTube are trademarks of Google LLC.</p>
+  </div>
+</div>

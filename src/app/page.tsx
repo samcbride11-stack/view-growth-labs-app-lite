@@ -108,14 +108,14 @@ export default function HomePage() {
         />
         <div className="container-page relative grid gap-12 py-16 sm:py-24 lg:grid-cols-[1.25fr_1fr] lg:items-center">
           <div>
-            <p className="eyebrow">YouTube ads, managed for you</p>
+            <p className="eyebrow">YOUTUBE ADS, MANAGED FOR YOU</p>
             <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
-              Affordable YouTube views, run through <span className="text-accent-strong">Google&nbsp;Ads</span>
+              {/* Affordable YouTube views, run through <span className="text-accent-strong">Google&nbsp;Ads</span> */}
+              More views for your video, powered by <span className="text-accent-strong">real YouTube&nbsp;Ads</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-              We promote your video using YouTube&apos;s official ad platform. A campaign manager builds and optimizes it
-              for low cost per view, and you see results in your own Google Ads account. Campaigns start at {minSpend} in
-              ad spend.
+              We promote your video through Google Ads, YouTube&apos;s official ad platform. Each campaign is built and monitored by hand for a low cost per view, 
+              and you see every result in your own Google Ads account. Campaigns start at {minSpend} in ad spend.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a href="#signup" className="btn-primary">
@@ -129,15 +129,17 @@ export default function HomePage() {
           </div>
 
           <div className="card p-7 shadow-[0_24px_60px_-30px_rgba(45,57,85,0.35)] sm:p-8">
-            <p className="eyebrow">Built for efficient reach</p>
+            <p className="eyebrow">BUILT FOR EFFICIENT REACH </p>
             <p className="mt-3 text-base leading-relaxed text-muted">
-              We target lower-cost regions to maximize views per ad dollar. Well suited to launching a new video, adding
-              visible traction to a campaign, or building early momentum.
+              We target lower-cost regions to get the most views per ad dollar. 
+              It’s a simple way to boost the public view count on a new or existing video.
+              {' '}<i>Want viewers in your own market? Ask about a targeted campaign.</i>
             </p>
             <dl className="mt-6 divide-y divide-line/50 border-t border-line/50">
               {[
                 ['Ad platform', "Google Ads (YouTube's own)"],
                 ['Ad spend', `From ${minSpend}, billed by Google`],
+                ['Our fee', '20% of first $1,000 of ad spend, 15% of next $1,000, then 10%'],
                 ['Account', 'Yours, with full visibility'],
               ].map(([term, detail]) => (
                 <div key={term} className="flex items-baseline justify-between gap-4 py-3.5">
