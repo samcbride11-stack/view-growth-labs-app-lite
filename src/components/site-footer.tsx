@@ -7,6 +7,13 @@ export function SiteFooter() {
       <div className="container-page flex flex-col gap-6 py-10 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <p className="font-display font-bold text-ink">{site.name}</p>
+          <address className="not-italic">
+            {site.address.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </address>
           <p>
             <a href={`mailto:${site.contactEmail}`} className="hover:text-ink">
               {site.contactEmail}

@@ -22,6 +22,11 @@ export default function TermsPage() {
       <ul>
         <li>Ad spend is billed by Google directly to the payment method on your Google Ads account.</li>
         <li>Our management fee is separate, stated before launch, and collected before the campaign starts.</li>
+        <li>
+          The management fee is a percentage of your agreed ad budget. If Google spends less than that budget, we refund
+          the fee on the unspent amount or credit it toward your next campaign. Spend is measured using Google Ads
+          reporting when the campaign ends.
+        </li>
       </ul>
 
       <h2>No guaranteed results</h2>
@@ -40,7 +45,8 @@ export default function TermsPage() {
       <h2>Access and cancellation</h2>
       <p>
         You can pause your campaign or remove our manager access at any time from your Google Ads account. Ad spend
-        already used is billed by Google.
+        already used is billed by Google. If you stop a campaign early, the management fee on the unspent budget is
+        refunded or credited as described under Fees and ad spend.
       </p>
 
       <h2>Not affiliated with Google</h2>

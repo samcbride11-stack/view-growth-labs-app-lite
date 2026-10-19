@@ -97,6 +97,11 @@ layout: custom
   font-family: var(--mono); font-size: 0.86em; background: var(--accent-soft);
   padding: 1px 6px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone;
 }
+.vgl-guide .shot {
+  display: block; width: 100%; max-width: 480px; height: auto; margin-top: 12px;
+  border: 1px solid var(--line); border-radius: 8px;
+}
+.vgl-guide .shot-sm { max-width: 340px; margin-top: 0; }
 .vgl-guide .note {
   background: var(--note-bg); border: 1px solid var(--note-line); color: var(--note-ink);
   border-radius: 8px; padding: 12px 14px; max-width: 64ch; font-size: 0.95rem;
@@ -132,6 +137,7 @@ layout: custom
 
 <div class="vgl-guide">
   <div class="top">
+    <div class="note" role="note"><b>Best on a computer.</b> Google Ads setup on a phone looks different from this guide, so use a laptop or desktop browser.</div>
     <p class="lede">Before we can run your campaign, your channel needs a Google Ads account that we can manage. This guide shows you how to create and verify the account and give us access. You stay the owner the whole time.</p>
     <ul class="meta">
       <li>About 15 minutes</li>
@@ -169,16 +175,22 @@ layout: custom
           <h3>Create and verify your Google Ads account</h3>
           <ol class="how">
             <li>Go to <a href="https://ads.google.com" rel="noopener">ads.google.com</a> and select <b>Start now</b>. Sign in with the Google account that owns your YouTube channel.</li>
-            <li>The screens are headed <b>Create your first campaign</b>, which is expected. The business name is optional, so you can leave it blank. Under <b>Where should people go after clicking your ad?</b>, keep <b>Your website</b> selected and paste your YouTube channel link. Select <b>Next</b>.</li>
+            <li>The screens are headed <b>Create your first campaign</b>, which is expected. The business name is optional, so you can leave it blank. Under <b>Where should people go after clicking your ad?</b>, keep <b>Your website</b> selected and paste your YouTube channel link. Select <b>Next</b>.
+              <img class="shot" src="/images/support/ads-setup-business-info.png" width="755" height="648" loading="lazy" alt="Google Ads screen with the business name field left blank and Your website selected, with a YouTube channel link pasted in the web page URL field">
+            </li>
             <li>On <b>Describe your business to get better campaign suggestions</b>, leave everything as Google filled it in and select <b>Next</b>.</li>
-            <li>Select <b>Skip</b> on the next three screens: <b>Add more information to save time during setup</b>, <b>Choose your goal for this campaign</b> and <b>Choose a campaign type</b>. After the last one, Google asks <b>Leave campaign creation?</b> Select <b>Leave campaign creation</b>. Don't build a campaign. We build it for you.</li>
+            <li>Select <b>Skip</b> on the next three screens: <b>Add more information to save time during setup</b>, <b>Choose your goal for this campaign</b> and <b>Choose a campaign type</b>. After the last one, Google asks <b>Leave campaign creation?</b> Select <b>Leave campaign creation</b>. Don't build a campaign. We build it for you.
+              <img class="shot" src="/images/support/ads-setup-leave-campaign.png" width="725" height="540" loading="lazy" alt="Google Ads dialog titled Leave campaign creation? over the Choose a campaign type screen, with Cancel and Leave campaign creation buttons">
+            </li>
             <li>On <b>Confirm your account and payment settings</b>:
               <ul>
                 <li>Confirm your billing country and time zone. Google says the time zone applies to your whole account and can't be changed later.</li>
                 <li>Check the payments profile. It should show your name and <b>Individual</b>, which fits a creator who isn't a registered business. If it shows something else, select <b>Change</b>.</li>
                 <li>Add or confirm your card under <b>Payment method</b>. Google bills it on the 1st of each month, or sooner when your balance reaches your payment threshold.</li>
                 <li>Google may show a new-advertiser credit offer. Read its terms and deadline before you submit.</li>
-                <li>Google asks whether you want guidance from an account strategist by phone or messaging. This is optional, so choose Yes or No, then select <b>Submit</b>.</li>
+                <li>Google asks whether you want guidance from an account strategist by phone or messaging. This is optional, so choose Yes or No, then select <b>Submit</b>.
+                  <img class="shot" src="/images/support/ads-setup-payment-settings.png" width="670" height="685" loading="lazy" alt="Google Ads Confirm your account and payment settings screen showing billing country, time zone, a new-advertiser credit offer, the payments profile and a card under Payment method">
+                </li>
               </ul>
             </li>
             <li>When Google says <b>Your account was created</b>, select <b>Continue</b>. Google then asks you to complete advertiser verification before your ads can run.</li>
@@ -186,11 +198,13 @@ layout: custom
               <ul>
                 <li>Under <b>What legal name should appear in the ad disclosure?</b>, keep your own name selected if you're advertising as yourself. Google shows this name and your country to people who see your ads.</li>
                 <li>Under <b>Does (your name) manage Google Ads accounts for other organizations?</b>, choose <b>No</b>.</li>
-                <li>Select <b>Submit</b>. Google makes some information about you and your ads public, including ad creatives, the dates and locations your ads ran, and business contact information.</li>
+                <li>Select <b>Submit</b>. Google makes some information about you and your ads public, including ad creatives, the dates and locations your ads ran, and business contact information.
+                  <img class="shot" src="/images/support/ads-setup-legal-name.png" width="835" height="572" loading="lazy" alt="Google Ads Answer a few questions about your organization screen, asking what legal name should appear in the ad disclosure, with the account owner's name selected">
+                </li>
               </ul>
             </li>
           </ol>
-          <div class="note"><b>Heads up.</b> An account without a payment method can't run ads, so complete billing before moving on. Google places a temporary authorization of about $50 on your card. It's removed within about a week.</div>
+          <div class="note"><b>Heads up.</b> An account without a payment method can't run ads, so complete billing before moving on. When we tested this, Google placed a $50 temporary authorization on the card and asked for a $20 prepayment. Your amounts may differ depending on your country and payment settings. The authorization is released by your bank, usually within about a week. Prepaid funds stay in your account and are used for your campaign.</div>
           <div class="note"><b>If Google asks for more.</b> Google may ask for more details to finish verification. If it does, complete them, because your ads can't run until verification is done.</div>
         </div>
       </li>
@@ -204,6 +218,8 @@ layout: custom
             <div class="idbar"><span class="acct">Your account name</span><span class="cid">123-456-7890</span></div>
             <div class="idcap">Example layout. Your account shows your own name and number.</div>
           </div>
+          <img class="shot shot-sm" src="/images/support/ads-setup-customer-id.png" width="340" height="70" loading="lazy" alt="Top right corner of Google Ads, showing the Customer ID 123-456-7890 above the account email address, next to the profile icon">
+
         </div>
       </li>
 
@@ -264,7 +280,7 @@ layout: custom
       </details>
       <details>
         <summary>Google asked me to verify my payment or shows a temporary charge.</summary>
-        <div class="ans"><p>That's normal. Google places a temporary authorization of about $50 on a new card, and it's removed within about a week.</p></div>
+        <div class="ans"><p>That's normal. When we tested this, Google placed a $50 temporary authorization on the card and asked for a $20 prepayment. Your amounts may differ depending on your country and payment settings. The authorization is released by your bank, usually within about a week. Prepaid funds stay in your account and are used for your campaign.</p></div>
       </details>
       <details>
         <summary>I don't see a request from View Growth Labs.</summary>

@@ -66,7 +66,7 @@ const reasons = [
 const faqs = [
   {
     q: 'What are paid views?',
-    a: 'Paid views come from people who watch your video after seeing it as an ad on YouTube. We run these ads through Google Ads, YouTube\'s official ad platform. They\'re real people on YouTube. Nothing is automated or simulated.',
+    a: 'When your video runs as an ad on YouTube, each time the ad starts playing, it counts as a view. We run these ads through Google Ads, YouTube’s official ad platform, and they’re shown to real people on YouTube. Nothing is automated or simulated. Many ad views are short: viewers can skip or scroll past after a few seconds. Expect a higher view count and wider reach, not necessarily long watch times.',
   },
   {
     q: 'Who pays for the ads?',
@@ -77,24 +77,40 @@ const faqs = [
     a: 'It depends on your budget: about 4 to 7 days for $100–499, 7 to 10 days for $500–999, and 10 to 14 days for $1,000 or more. We agree the exact dates with you before launch.',
   },
   {
+    q: 'Can you guarantee a number of views?',
+    a: 'No. Cost per view depends on the regions, the season, and YouTube’s ad auction, so results vary from campaign to campaign. Before launch, we’ll give you an estimate based on campaigns we’ve run.',
+  },
+  {
     q: 'How do I see results?',
     a: 'Everything is visible in your own Google Ads account, including spend, views, and views added to your public count. We also email you a summary report when the campaign ends.',
   },
   {
     q: "Will the ad views show on my video's view count?",
-    a: "On the formats we use, YouTube adds an ad play to your video's public count when it starts playing. YouTube runs its own checks, so the number under the video can lag or adjust; Google Ads reporting is what you're billed on.",
+    a: 'On the formats we use (in-stream and Shorts ads), YouTube adds an ad play to your video’s public count when it starts playing. YouTube runs its own checks, so the number under your video can lag or adjust. Google Ads reporting is what you’re billed on.',
+  },
+  {
+    q: 'Why lower-cost countries?',
+    a: 'Ads cost much less to show in some regions, so your budget reaches more people. If you’d rather reach viewers in specific markets, choose “Specific countries” when you sign up. You’ll get fewer views for the same budget.',
+  },
+  {
+    q: 'Will this help my channel get monetized?',
+    a: 'Not directly. Views and watch time from ads don’t count toward YouTube Partner Program eligibility. Ads can bring new people to your channel, but only organic viewing counts toward monetization.',
   },
   {
     q: 'How do I pay the management fee?',
-    a: 'After you sign up, we email you a secure payment link. The management fee is collected before your campaign launches.',
+    a: 'After you sign up, we email you a secure payment link. The fee is based on your agreed ad budget and is collected before your campaign launches.',
+  },
+  {
+    q: 'What if my campaign spends less than planned?',
+    a: 'Since the fee is a percentage of ad spend, if Google spends less than your agreed budget, we’ll refund the fee on the unspent amount, or credit it toward your next campaign.',
   },
   {
     q: 'Can I stop anytime?',
-    a: 'Yes. You can pause the campaign in your Google Ads account or remove our manager access at any time. Google bills only for ad spend already used.',
+    a: 'Yes. You can pause the campaign in your Google Ads account or remove our manager access at any time. Google bills only for ad spend already used. Fees for unspent budget are handled as above.',
   },
   {
-    q: "Is this against YouTube's rules?",
-    a: "No. Google Ads is YouTube's own advertising system, and promoting videos with it is how YouTube expects advertisers to do it. Your video does need to meet Google's advertising policies, and we'll let you know if anything needs attention.",
+    q: 'Is this allowed under YouTube’s rules?',
+    a: 'Yes. Google Ads is YouTube’s own advertising system, and running ads with it is how YouTube expects videos to be promoted. Your video still needs to meet Google’s advertising policies, and we’ll let you know if anything needs attention. YouTube also runs its own quality checks on views, which is why the public count can adjust.',
   },
 ];
 

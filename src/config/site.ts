@@ -6,6 +6,8 @@ export const site = {
   url: 'https://viewgrowthlabs.com',
   // Public contact address shown in the footer and policy pages.
   contactEmail: 'support@viewgrowthlabs.com',
+  // Mailing address shown in the footer, one entry per line.
+  address: ['4460 Redwood Hwy', 'Suite 16-713', 'San Rafael, CA 94903'],
   // Logo shown in the header. Put the file in `public/brand/` and set `src` to match
   // (e.g. '/brand/logo.png'). Until the file exists, a built-in placeholder mark is shown.
   logo: {

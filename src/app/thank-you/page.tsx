@@ -8,16 +8,16 @@ export const metadata: Metadata = {
 
 const nextSteps = [
   {
-    title: 'Check your email',
-    body: "We've sent a confirmation to the address you gave us. If you don't see it in a few minutes, check your spam or promotions folder. You can reply to it with any questions.",
+    title: 'We review your video and budget.',
+    body: 'We check that your video can run as an ad, then email you a recommended budget, campaign length, and what to realistically expect. A confirmation of your signup is already on its way. If you don’t see it, check spam or promotions.',
   },
   {
-    title: 'Pay the management fee',
-    body: 'After we review your video and confirm your exact ad budget with you, we email you a secure payment link for the management fee. It is collected before your campaign launches.',
+    title: 'You pay the management fee.',
+    body: 'Once you’re happy with the plan, we send a Stripe payment link for our fee. Your ad spend isn’t included. Google bills that directly to your own card.',
   },
   {
-    title: 'Link your Google Ads account',
-    body: "We send a manager access request to your Google Ads account. Approve it in Google Ads under Admin, then Access and security, then Managers. If you don't have a Google Ads account yet, create one at ads.google.com and send us your Customer ID. Ad spend is billed by Google to the card on that account.",
+    title: 'You link your Google Ads account.',
+    body: 'We send a manager access request. Approve it in Google Ads under Admin → Access and security → Managers. No account yet? Create one at ads.google.com, skip creating a campaign, add your billing details, and reply with your 10-digit Customer ID.',
   },
 ];
 
@@ -30,10 +30,21 @@ export default function ThankYouPage() {
             <path d="M5 12.5 10 17.5 19 7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <h1 className="mt-6 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">Thanks, you&apos;re in.</h1>
+        <h1 className="mt-6 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">Got it. We&rsquo;re reviewing your video.</h1>
         <p className="mt-4 text-lg leading-relaxed text-muted">
-          We&apos;ve received your signup. Here&apos;s what happens next.
+          You&rsquo;ll hear from us by email within 1 business day. Here&rsquo;s how it goes from there.
         </p>
+
+        <div role="note" className="mt-8 rounded-xl border border-accent-strong/30 bg-accent-soft p-5 leading-relaxed sm:p-6">
+          <p>
+            <strong className="font-bold">Don&rsquo;t see our email?</strong> Check your spam, junk, or promotions folder
+            for a message from{' '}
+            <a href="mailto:support@viewgrowthlabs.com" className="font-semibold text-accent-strong underline underline-offset-4">
+              support@viewgrowthlabs.com
+            </a>
+            . If it&rsquo;s there, mark it &ldquo;Not spam&rdquo; so our campaign updates reach your inbox.
+          </p>
+        </div>
 
         <ol className="mt-12 space-y-5">
           {nextSteps.map((step, i) => (
@@ -48,6 +59,35 @@ export default function ThankYouPage() {
             </li>
           ))}
         </ol>
+
+        <div role="note" className="mt-5 rounded-xl border border-accent-strong/30 bg-accent-soft p-5 leading-relaxed sm:p-6">
+          <p>
+            <strong className="font-bold">New to Google Ads?</strong> Create a free account at{' '}
+            <a
+              href="https://ads.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-accent-strong underline underline-offset-4"
+            >
+              ads.google.com
+            </a>
+            . It stays in your name, and Google bills ad spend directly to you. Don&rsquo;t create a campaign; we build it.
+            Google may place a small hold or ask for a prepayment when you add your card, which is normal.
+          </p>
+          <Link
+            href="/support/ads-account-setup-guide"
+            className="mt-3 inline-block font-semibold text-accent-strong underline-offset-4 hover:underline"
+          >
+            Setup guide &rarr;
+          </Link>
+        </div>
+
+        <p className="mt-8 text-lg leading-relaxed">
+          <span className="font-display font-bold">Then we launch.</span>{' '}
+          <span className="text-muted">
+            You&rsquo;ll get updates by email during the campaign and a final report about 3 days after it ends.
+          </span>
+        </p>
 
         <Link href="/" className="mt-10 inline-block font-semibold text-accent-strong underline-offset-4 hover:underline">
           ← Back to home
