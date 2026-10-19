@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { SignupForm } from '@/components/signup-form';
 import { formatUsd, pricing } from '@/config/site';
 
@@ -174,12 +175,24 @@ export default function HomePage() {
       {/* Our approach */}
       <section className="py-20 sm:py-24">
         <div className="container-page">
-          <p className="eyebrow">Our approach</p>
-          <h2 className="h2 mt-3 max-w-2xl">Built around the number under your video.</h2>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-            Google Ads reports several kinds of views. We build every campaign around the one most people care about:
-            views added to your video&apos;s public count.
-          </p>
+          <div className="grid items-center gap-10 md:grid-cols-[1.4fr_1fr] md:gap-12">
+            <div>
+              <p className="eyebrow">Our approach</p>
+              <h2 className="h2 mt-3 max-w-2xl">Built around the number under your video.</h2>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
+                Google Ads reports several kinds of views. We build every campaign around the one most people care about:
+                views added to your video&apos;s public count.
+              </p>
+            </div>
+            <Image
+              src="/images/phone_views_transparent_lg.png"
+              alt="Phone showing a YouTube video with its public view count highlighted"
+              width={1000}
+              height={1000}
+              sizes="(min-width: 768px) 440px, 90vw"
+              className="mx-auto w-full max-w-[440px]"
+            />
+          </div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {approach.map((item) => (
               <div key={item.title} className="card p-7">
@@ -224,8 +237,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-8 max-w-3xl text-sm leading-relaxed text-muted">
-            Campaigns target lower-cost regions by default. If you need a specific country, include it in the notes field
-            of the signup form and we&apos;ll confirm availability and pricing.
+            Prefer specific markets? Choose “Specific countries” when you sign up. Expect fewer views for the same budget.
           </p>
         </div>
       </section>

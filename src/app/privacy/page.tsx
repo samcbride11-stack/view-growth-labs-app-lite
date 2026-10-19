@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <li>Your name and email address</li>
         <li>Your YouTube video link and estimated budget</li>
         <li>Your Google Ads Customer ID, if you provide it</li>
-        <li>Anything you write in the notes field</li>
+        <li>Your country targeting choice and anything you write in the notes field</li>
       </ul>
 
       <h2>How we use it</h2>

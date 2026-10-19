@@ -47,6 +47,18 @@ export function normalizeGoogleAdsId(value: string): string {
   return value.replace(/[\s-]/g, '');
 }
 
+export const TARGETING_OPTIONS = [
+  { value: 'lowest-cost', label: 'Lowest-cost countries' },
+  { value: 'specific', label: 'Specific countries' },
+] as const;
+
+const TARGETING_VALUES = TARGETING_OPTIONS.map((o) => o.value) as ['lowest-cost', 'specific'];
+
+// Readable summary of the targeting choice, used in Airtable notes and the owner email.
+export function describeTargeting(input: { targeting: 'lowest-cost' | 'specific'; countries?: string }): string {
+  return input.targeting === 'specific' ? `Specific countries: ${input.countries}` : 'Lowest-cost countries';
+}
+
 export const signupSchema = z.object({
   name: z.string().trim().min(1, 'Please enter your name').max(200, 'Please keep this under 200 characters'),
   email: emailField,
@@ -71,12 +83,26 @@ export const signupSchema = z.object({
     .optional()
     .transform((v) => (v ? normalizeGoogleAdsId(v) : '') || undefined)
     .refine((v) => v === undefined || /^\d{10}$/.test(v), GOOGLE_ADS_ID_ERROR),
+  targeting: z.enum(TARGETING_VALUES, {
+    errorMap: () => ({ message: 'Please choose where your ads should run' }),
+  }),
+  // Required only when targeting is "specific" (checked below).
+  countries: z
+    .string()
+    .trim()
+    .max(500, 'Please keep this under 500 characters')
+    .optional()
+    .transform((v) => v || undefined),
   notes: z
     .string()
     .trim()
     .max(2000, 'Please keep this under 2,000 characters')
     .optional()
     .transform((v) => v || undefined),
+}).superRefine((data, ctx) => {
+  if (data.targeting === 'specific' && !data.countries) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['countries'], message: 'Please enter at least one country' });
+  }
 });
 
 export type SignupInput = z.infer<typeof signupSchema>;

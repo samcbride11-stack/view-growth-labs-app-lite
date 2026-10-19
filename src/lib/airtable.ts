@@ -1,7 +1,7 @@
 // Server only: imported solely by API routes, so the token never reaches the browser.
 import { INTAKE_FIELDS, SIGNUP_FIELDS, getBudgetTier } from '@/lib/airtable-fields';
 import type { IntakeInput } from '@/lib/intake-schema';
-import type { SignupInput } from '@/lib/signup-schema';
+import { describeTargeting, type SignupInput } from '@/lib/signup-schema';
 
 interface AirtableConfig {
   token: string;
@@ -31,9 +31,9 @@ function buildFields(input: SignupInput, signupDate: string): Record<string, str
     [SIGNUP_FIELDS.budget]: getBudgetTier(input.budgetTier).amount,
     [SIGNUP_FIELDS.signupDate]: signupDate,
   };
-  // Blank optional fields are omitted, never sent as empty strings.
+  // Blank optional fields are omitted, never sent as empty strings. Notes always carries the targeting choice.
   if (input.googleAdsId) fields[SIGNUP_FIELDS.googleAdsId] = input.googleAdsId;
-  if (input.notes) fields[SIGNUP_FIELDS.notes] = input.notes;
+  fields[SIGNUP_FIELDS.notes] = [`Targeting: ${describeTargeting(input)}`, input.notes].filter(Boolean).join('\n\n');
   return fields;
 }
 

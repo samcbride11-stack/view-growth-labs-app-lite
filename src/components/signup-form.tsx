@@ -9,10 +9,18 @@ const FORM_BUDGET_TIERS = BUDGET_TIERS.filter((tier) => tier.amount >= pricing.m
 import {
   HONEYPOT_FIELD,
   signupSchema,
+  TARGETING_OPTIONS,
   toFieldErrors,
   type FieldErrors,
   type SignupField,
 } from '@/lib/signup-schema';
+
+type Targeting = (typeof TARGETING_OPTIONS)[number]['value'];
+
+const TARGETING_DESCRIPTIONS: Record<Targeting, string> = {
+  'lowest-cost': 'Most views for your budget.',
+  specific: 'Reach viewers in markets you choose. Fewer views per dollar.',
+};
 
 const inputClass =
   'mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-base text-ink placeholder:text-muted/70 focus:outline-none focus:ring-2 focus:ring-accent-strong/40';
@@ -67,6 +75,7 @@ export function SignupForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [targeting, setTargeting] = useState<Targeting>('lowest-cost');
 
   function describedBy(id: SignupField, hasHint = false) {
     const ids = [hasHint ? `${id}-hint` : null, errors[id] ? `${id}-error` : null].filter(Boolean);
@@ -218,19 +227,74 @@ export function SignupForm() {
         />
       </Field>
 
-      <Field
-        id="notes"
-        label="Anything else we should know?"
-        optional
-        hint="For example, a specific country you want to target."
-        error={errors.notes}
+      <fieldset
+        role="radiogroup"
+        aria-required="true"
+        aria-invalid={Boolean(errors.targeting)}
+        aria-describedby={errors.targeting ? 'targeting-error' : undefined}
       >
+        <legend className="block text-sm font-semibold text-ink">
+          Where should your ads run?
+          <RequiredMark />
+        </legend>
+        <div className="mt-3 grid gap-2 sm:gap-3">
+          {TARGETING_OPTIONS.map((option) => (
+            <label
+              key={option.value}
+              className={`flex cursor-pointer flex-col rounded-xl border bg-white px-4 py-3 transition-colors has-[:checked]:border-accent-strong has-[:checked]:bg-accent-soft has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-accent-strong/40 ${
+                errors.targeting ? 'border-red-600' : 'border-line'
+              }`}
+            >
+              <input
+                type="radio"
+                name="targeting"
+                value={option.value}
+                required
+                defaultChecked={option.value === 'lowest-cost'}
+                onChange={() => setTargeting(option.value)}
+                className="sr-only"
+              />
+              <span className="text-base font-semibold text-ink">
+                {option.label}
+                {option.value === 'lowest-cost' && (
+                  <span className="ml-1.5 font-normal text-muted">(recommended)</span>
+                )}
+              </span>
+              <span className="mt-0.5 text-sm text-muted">{TARGETING_DESCRIPTIONS[option.value]}</span>
+            </label>
+          ))}
+        </div>
+        {errors.targeting && (
+          <p id="targeting-error" className="mt-2 text-sm font-medium text-red-700">
+            {errors.targeting}
+          </p>
+        )}
+      </fieldset>
+
+      {targeting === 'specific' && (
+        <Field id="countries" label="Which countries?" error={errors.countries}>
+          <input
+            id="countries"
+            name="countries"
+            type="text"
+            placeholder="e.g. United States, Canada"
+            required
+            aria-required="true"
+            aria-invalid={Boolean(errors.countries)}
+            aria-describedby={describedBy('countries')}
+            className={fieldClass('countries')}
+          />
+        </Field>
+      )}
+
+      <Field id="notes" label="Anything else?" optional error={errors.notes}>
         <textarea
           id="notes"
           name="notes"
           rows={4}
+          placeholder="Deadlines, launch dates, or questions"
           aria-invalid={Boolean(errors.notes)}
-          aria-describedby={describedBy('notes', true)}
+          aria-describedby={describedBy('notes')}
           className={fieldClass('notes')}
         />
       </Field>

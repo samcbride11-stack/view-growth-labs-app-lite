@@ -1,7 +1,7 @@
 import { site } from '@/config/site';
 import { getBudgetTier } from '@/lib/airtable-fields';
 import type { IntakeInput } from '@/lib/intake-schema';
-import type { SignupInput } from '@/lib/signup-schema';
+import { describeTargeting, type SignupInput } from '@/lib/signup-schema';
 
 interface EmailConfig {
   apiKey: string;
@@ -123,6 +123,7 @@ export function sendOwnerAlert(
     // "$1,000+" is stored in Airtable as 1000; the label shows what the visitor actually picked.
     ['Budget (estimate)', `${budget.label} (stored as ${budget.amount})`],
     ['Google Ads ID', input.googleAdsId ?? '(not provided)'],
+    ['Targeting', describeTargeting(input)],
     ['Notes', input.notes ?? '(none)'],
     ['Signup Date', signupDate],
     airtable.ok ? ['Airtable record', airtable.recordId] : ['Airtable error', airtable.error],
