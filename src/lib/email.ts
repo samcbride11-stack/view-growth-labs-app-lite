@@ -26,7 +26,7 @@ async function send(config: EmailConfig, message: Message) {
     },
     body: JSON.stringify({
       personalizations: [{ to: [{ email: message.to }] }],
-      from: { email: config.fromEmail, name: site.name },
+      from: { email: config.fromEmail, name: `${site.name} Support` },
       ...(message.replyTo ? { reply_to: { email: message.replyTo } } : {}),
       subject: message.subject,
       content: [

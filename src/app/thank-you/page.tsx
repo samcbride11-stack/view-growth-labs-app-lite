@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Thanks for signing up',
@@ -24,6 +25,14 @@ const nextSteps = [
 export default function ThankYouPage() {
   return (
     <section className="py-16 sm:py-24">
+      {/* Event snippet for VGL-signup conversion page */}
+      <Script id="vgl-signup-conversion" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('event', 'conversion', {'send_to': 'AW-18513992719/2XIsCOnfhKMdEI-4lPxE'});
+        `}
+      </Script>
       <div className="container-page max-w-3xl">
         <div className="grid h-14 w-14 place-items-center rounded-full bg-accent-soft text-accent-strong" aria-hidden="true">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
