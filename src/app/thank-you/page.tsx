@@ -31,6 +31,7 @@ export default function ThankYouPage() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('event', 'conversion', {'send_to': 'AW-18513992719/2XIsCOnfhKMdEI-4lPxE'});
+          gtag('event', 'sign_up', {'send_to': 'G-EV37XPVECY', 'method': 'signup_form'});
         `}
       </Script>
       <div className="container-page max-w-3xl">
